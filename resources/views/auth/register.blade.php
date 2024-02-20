@@ -16,14 +16,15 @@
             <h1 class="">Register</h1>
 
             <form class="login-form" method="post" action="{{ url('/register') }}">
+                @csrf
                 {{-- @csrf --}}
-                @php
+                {{-- @php
                     $myCsrf = csrf_token();
                 @endphp
                 <input type="hidden" name="_token" value="{{ $myCsrf }}">
                 @php
                     session('_token', $myCsrf);
-                @endphp
+                @endphp --}}
                 <input name="username" type="text" placeholder="username" />
                 <input name="email" type="email" placeholder="email" />
                 <input name="address" type="text" placeholder="address" />
