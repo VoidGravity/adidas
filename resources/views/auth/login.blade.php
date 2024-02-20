@@ -29,6 +29,7 @@
                 @php
                     echo session()->token();   
                 @endphp
+                FDQSDFQSD
                 <input name="name" type="text" placeholder="username" />
                 <input name="password" type="password" placeholder="password" />
                 <button>login</button>
