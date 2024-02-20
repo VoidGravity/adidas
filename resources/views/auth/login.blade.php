@@ -25,7 +25,13 @@
             @endif
            
             <form class="login-form" method="post" action="{{ route('auth.login')}}">
-                @csrf
+                @php
+                    $myCsrf = csrf_token();
+                @endphp
+                <input type="hidden" name="_token" value="{{ $myCsrf }}">
+                @php
+                    session('_token', $myCsrf);   
+                @endphp
                 <input name="name" type="text" placeholder="username" />
                 <input name="password" type="password" placeholder="password" />
                 <button>login</button>

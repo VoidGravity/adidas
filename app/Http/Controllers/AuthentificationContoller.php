@@ -98,7 +98,7 @@ class AuthentificationContoller extends Controller
         //     'name' => $request->name, // Make sure 'name' is the correct field you use for login.
         //     'password' => $request->password,
         // ];;
-        dd(session()->token(),$request->input('_token'), $request->header('X-CSRF-TOKEN'));
+        dd(session()->token(),$request->input('_token'));
 
         $request->validate([
             'name' => 'required',
