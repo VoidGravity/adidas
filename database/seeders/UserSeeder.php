@@ -18,6 +18,10 @@ class UserSeeder extends Seeder
             'id' => 1,
             'name' => 'SuperAdmin',
         ]);
+        DB::table('roles')->insert([
+            'id' => 2,
+            'name' => 'default',
+        ]);
         DB::table('users')->insert([
             'name' => 'abdelllah',
             'email' => 'abdellahbardichwork@gmail.com',

@@ -166,7 +166,7 @@ class AuthentificationContoller extends Controller
 
             'password' => Hash::make($request->password),
             'address' => $request->address,
-            'role_id' => 20
+            'role_id' => 2
         ]);
         return redirect('/login');
     }
