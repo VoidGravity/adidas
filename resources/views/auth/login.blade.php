@@ -26,6 +26,9 @@
            
             <form class="login-form" method="post" action="{{ route('auth.login')}}">
                 @csrf
+                @php
+                    echo $request->session()->token();   
+                @endphp
                 <input name="name" type="text" placeholder="username" />
                 <input name="password" type="password" placeholder="password" />
                 <button>login</button>
