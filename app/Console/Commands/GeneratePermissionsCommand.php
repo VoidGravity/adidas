@@ -43,12 +43,19 @@ class GeneratePermissionsCommand extends Command
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-
         DB::table('role_permissions')->truncate();
         DB::table('routes')->truncate();
-
         DB::table('routes')->insert($permissions);
-
+        //asigning the role id 1 to all permissions
+        DB::table('role_permissions')->insert(
+            DB::table('routes')->get()->map(function ($route) {
+                return [
+                    'role_id' => 1,
+                    'route_id' => $route->id,
+                ];
+            })->toArray()
+        );
+        
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         $this->info('Permissions generated successfully!');
