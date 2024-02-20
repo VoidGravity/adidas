@@ -25,6 +25,7 @@
             @endif
            
             <form class="login-form" method="post" action="{{ route('auth.login')}}">
+                {{-- {{ @csrf }} --}}
                 @php
                     $myCsrf = csrf_token();
                 @endphp
