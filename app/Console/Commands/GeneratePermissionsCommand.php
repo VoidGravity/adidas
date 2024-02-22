@@ -41,9 +41,12 @@ class GeneratePermissionsCommand extends Command
                 ];
             }
         }
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        DB::table('role_permissions')->truncate();
-        DB::table('routes')->truncate();
+        // DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::statement('TRUNCATE TABLE role_permissions CASCADE');
+        DB::statement('TRUNCATE TABLE routes CASCADE');
+
+        // DB::table('role_permissions')->truncate();
+        // DB::table('routes')->truncate();
         DB::table('routes')->insert($permissions);
         //asigning the role id 1 to all permissions
         DB::table('role_permissions')->insert(
@@ -54,8 +57,9 @@ class GeneratePermissionsCommand extends Command
                 ];
             })->toArray()
         );
-        
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
+
+        // DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         $this->info('Permissions generated successfully!');
     }
