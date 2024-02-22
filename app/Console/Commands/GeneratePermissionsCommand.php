@@ -27,7 +27,7 @@ class GeneratePermissionsCommand extends Command
      */
     public function handle()
     {
-        $routes = Route::getRoutes(); // Update the method call
+        $routes = Route::getRoutes();
 
         $permissions = [];
 
@@ -41,7 +41,6 @@ class GeneratePermissionsCommand extends Command
                 ];
             }
         }
-
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         DB::table('role_permissions')->truncate();
         DB::table('routes')->truncate();
