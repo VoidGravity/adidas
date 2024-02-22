@@ -52,7 +52,7 @@ class GeneratePermissionsCommand extends Command
         DB::table('role_permissions')->insert(
             DB::table('routes')->get()->map(function ($route) {
                 return [
-                    'role_id' => 1,
+                    'role_id' => 44,
                     'route_id' => $route->id,
                 ];
             })->toArray()
