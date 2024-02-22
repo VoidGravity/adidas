@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Route;
 
 
-class role extends Model
+class Role extends Model
 {
     use HasFactory;
 
