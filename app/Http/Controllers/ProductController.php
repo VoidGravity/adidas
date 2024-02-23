@@ -173,13 +173,21 @@ class ProductController extends Controller
         $search = $request->search;
         $categoryId = $request->category_id;
 
-        $products = Product::where('price', '<=', $search)
-            ->orWhere('category_id', $categoryId)
-            ->get();
+        // Validate that category_id is a number
+        if (!is_numeric($categoryId)) {
+            // Handle the error, perhaps set a default value or return an error message
+            $categoryId = null; // Example: setting it to null or a default value
+        }
 
+        $products = Product::where('price', '<=', $search)
+            ->when($categoryId, function ($query) use ($categoryId) {
+                return $query->where('category_id', $categoryId);
+            })
+            ->get();
 
         return view('products.index', compact('products'));
     }
+
 
 
 
